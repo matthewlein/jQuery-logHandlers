@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>jQuery.logHandlers plugin</title>
+</head>
+<body>
+    
+    <a href="#">
+        I have many events.
+    </a>
+    
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script src="jQuery.logHandlers.js"></script>
+
+<script>
+    
+    jQuery('a').click(function(event) {
+        // Act on the click
+    }).click(function(event) {
+        // another clicker
+    }).mouseover(function(event) {
+        // mouseover
+    }).bind('custom', function(event) {
+      // custom event
+    }).bind('click.name', function(event) {
+      // click namespaced
+    });
+    
+    
+    jQuery('a').logHandlers('*');
+    
+    /*
+    outputs:
+    
+     <a href="#">
+         i have many events
+     </a>
+
+    0: [click] : function (event) {
+            // Act on the click
+        }
+    1: [click] : function (event) {
+            // another clicker
+        }
+    2: [click.name] : function (event) {
+          // click namespaced
+        }
+    0: [mouseover] : function (event) {
+            // mouseover
+        }
+    0: [custom] : function (event) {
+          // custom event
+        }"
+    */
+    
+</script>
+
+</body>
+</html>
